@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Work Result Finder</title>
+
+<style>
+.heading{
+text-align: center;
+text-decoration: underline;
+width: 80%;
+}
+.From{
+border: 5px solid aliceblue;
+background-color: darkorchid;
+width: 50%;
+margin-left: 20%;
+text-align: center;
+}
+#A{
+margin-top: 10px;
+}
+#RResult{
+margin-bottom: 10px;
+}
+.Pat2{
+margin-left: 35%;
+}
+
+#button{
+background-color: darksalmon;
+}
+
+.Box{
+width: 20%;
+height: 30%;
+background-color: lightgreen;
+position: relative;
+left: 15%;
+text-align: center;
+margin-top: 10px;
+margin-left: 20%;
+border-radius: 10%;
+
+}
+#one{
+position: absolute;
+height: 20%;
+width: 60%;
+margin-top: 10px;
+left:20% ;
+}
+.btn{
+margin-top: 10px;
+
+}
+</style>
+</head>
+
+<body>
+<h1 class="heading"> Calculation System</h1>
+
+<form class="From">
+<input type="number" id="A"><br><br>
+<input type="number" id="B"><br><br>
+
+<button type="button" onclick="Calculation()">Calculation</button><br><br>
+
+<select id="M">
+<option value="+"> + </option>
+<option value="-"> - </option>
+<option value="*"> * </option>
+<option value="/"> / </option>
+
+</select>
+
+<input type="number" id="RResult">
+
+</form>
+
+<h1 class="heading"> Result Finder System</h1>
+
+<form class="Pat2">
+<label>Bangla</label><br>
+<input type="number" id="Ban"><br><br>
+
+<label>English</label><br>
+
+<input type="number" id="Eng"><br><br>
+
+<label>Math</label><br>
+<input type="number" id="Mat"><br><br>
+
+<label>Ict</label><br>
+<input type="number" id="Ict"><br><br>
+
+<label>Phy</label><br>
+<input type="number" id="Phy"><br> <br>
+
+<button type="button" onclick="grade()" id="button">Calculate</button><br><br>
+
+<table>
+<tr>
+<td>Total Marks:</td>
+<td id="TM"></td>
+</tr>
+<tr>
+<td>Obtained Marks:</td>
+<td id="obt"></td>
+</tr>
+<tr>
+<td>Percentage:</td>
+<td id="Per"></td>
+</tr>
+<tr>
+<td>Grade:</td>
+
+<td id="Gr"></td>
+</tr>
+<tr>
+<td>Remark:</td>
+<td id="RM"></td>
+</tr>
+</table>
+</form>
+
+<h1 class="heading"> Calculator </h1>
+<div class="Box">
+<input type="text" Id="one"><br><br><br>
+
+<div class="btn">
+<button type="button" id="a", onclick="inputset('1'), bgc()">1</button>
+<button type="button" onclick="inputset('2')">2</button>
+<button type="button" onclick="inputset('3')">3</button>
+<button type="button" onclick="inputset('4')">4</button>
+<button type="button" onclick="inputset('5')">5</button>
+
+</div>
+<div class="btn">
+<button type="button" onclick="inputset('6')">6</button>
+<button type="button" onclick="inputset('7')">7</button>
+<button type="button" onclick="inputset('8')">8</button>
+<button type="button" onclick="inputset('9')">9</button>
+<button type="button" onclick="inputset('0')">0</button>
+
+</div>
+
+<div class="btn">
+<button type="button" onclick="inputset('+')" >+</button>
+<button type="button" onclick="inputset('-')">-</button>
+<button type="button" onclick="inputset('*')">*</button>
+<button type="button" onclick="inputset('/')">/</button>
+<button type="button" onclick="inputset('%')">%</button>
+
+</div>
+<div class="btn">
+<button type="button" onclick="cal()">=</button>
+<button type="button" onclick="cl()">CLEAR</button>
+</div><br><br>
+
+</div>
+
+<script>
+function Calculation(){
+let x, y, r, p;
+x = parseInt(document.getElementById('A').value);
+y = parseInt(document.getElementById('B').value);
+p = document.getElementById('M').value;
+
+if(p=='+')
+{
+r = x + y;
+document.getElementById('RResult').value = r;
+}
+
+else if(p=='-')
+{
+r = x - y;
+document.getElementById('RResult').value = r;
+}
+
+else if(p=='*')
+{
+r = x * y;
+document.getElementById('RResult').value = r;
+}
+else if(p=='/')
+{
+r = x / y;
+document.getElementById('RResult').value = r;
+}
+
+}
+
+function grade(){
+var a = parseInt(document.getElementById('Ban').value);
+var b = parseInt(document.getElementById('Eng').value);
+var c = parseInt(document.getElementById('Mat').value);
+var d = parseInt(document.getElementById('Ict').value);
+var e = parseInt(document.getElementById('Phy').value);
+
+document.getElementById("TM").innerText = "500";
+if (a>100 || b>100 || c>100 || d>100 || e>100){
+
+alert("Please enter correct value");
+}
+else{
+var obt= a+b+c+d+e;
+document.getElementById("obt").innerHTML=obt;
+var Per=obt/500*100;
+document.getElementById("Per").innerHTML=Per;
+if (a>=33 && b>=33 && c>=33 && d>=33 && e>=33){
+document.getElementById("RM").innerHTML="<span style='color:green'>Pass</span>";
+}
+else{
+document.getElementById("RM").innerHTML="<span style='color:red'>Fail</span>";
+}
+if(a>=80 && b>=80 && c>=80 && d>=80 && e>=80){
+document.getElementById("Gr").innerHTML="A+";
+}
+else if(a>=70 && b>=70 && c>=70 && d>=70 && e>=70){
+document.getElementById("Gr").innerHTML="A";
+}
+else if(a>=60 && b>=60 && c>=60 && d>=60 && e>=60){
+document.getElementById("Gr").innerHTML="A-";
+}
+else if(a>=50 && b>=50 && c>=50 && d>=50 && e>=50){
+document.getElementById("Gr").innerHTML="B";
+}
+else if(a>=40 && b>=40 && c>=40 && d>=40 && e>=40){
+document.getElementById("Gr").innerHTML="C";
+}
+else if (a>=33 && b>=33 && c>=33 && d>=33 && e>=33){
+
+document.getElementById("Gr").innerHTML="D";
+}
+else{
+document.getElementById("Gr").innerHTML="F";
+}
+}
+}
+
+function bgc(){
+document.getElementById('a').style.backgroundColor = 'red';
+}
+function inputset(a){
+let x= document.getElementById('one');
+x.value +=a;
+
+}
+function setop(b){
+let y = document.getElementById('one');
+Y.value += b
+}
+function cl(){
+let z = '';
+document.getElementById('one').value = z;
+
+}
+function cal(){
+let R = document.getElementById('one');
+let Result = eval(R.value);
+document.getElementById('one').value =Result;
+
+}
+
+</script>
+
+</body>
+</html>
